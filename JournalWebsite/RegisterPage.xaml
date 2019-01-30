@@ -1,0 +1,18 @@
+﻿<Window x:Class="JournalWebsite.RegisterPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JournalWebsite"
+        mc:Ignorable="d"
+        Title="RegisterPage" Height="450" Width="800">
+    <Grid>
+        <TextBlock x:Name="Reggie" HorizontalAlignment="Left" Margin="263,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="49" Width="288" FontSize="36" TextAlignment="Center" FontWeight="Bold"><Run Text="Register"/></TextBlock>
+        <TextBlock x:Name="Username" HorizontalAlignment="Left" Margin="294,115,0,0" TextWrapping="Wrap" Text="Please enter username:" VerticalAlignment="Top" Height="39" Width="216" FontSize="16" TextAlignment="Center"/>
+        <TextBox x:Name="name" HorizontalAlignment="Left" Height="41" Margin="294,159,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="216"/>
+        <TextBlock x:Name="Password" HorizontalAlignment="Left" Margin="294,237,0,0" TextWrapping="Wrap" Text="Please enter  a password:" VerticalAlignment="Top" Height="37" Width="216" FontSize="16" TextAlignment="Center"/>
+        <TextBox x:Name="pass" HorizontalAlignment="Left" Height="46" Margin="294,279,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="216"/>
+        <Button x:Name="submit" Content="Submit" HorizontalAlignment="Left" Margin="294,353,0,0" VerticalAlignment="Top" Width="216" Height="26" FontSize="16" Click="SubmitButton_Click"/>
+
+    </Grid>
+</Window>

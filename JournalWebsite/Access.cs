@@ -11,12 +11,12 @@ namespace JournalWebsite
 {
     class Access
     {
-        public static string connection = "Data Source=DESKTOP-2PSBHKH\\SQLEXPRESS;Initial Catalog=JournalWebsite;Integrated Security=True";
+        public static string connection = "Data Source=LAPTOP-7KGTFNDJ\\SQLEXPRESS;Initial Catalog=Digital Journal;Integrated Security=True";
         SqlConnection JournalWebsite = new SqlConnection(connection);
 
         public bool login(string user, string password)
         {
-            string query = $"SELECT [User Name], [Password] FROM [User] WHERE [User Name] = '{user}' AND [Password] = '{password}'";
+            string query = $"SELECT [Username], [Password] FROM [Users] WHERE [Username] = '{user}' AND [Password] = '{password}'";
 
             SqlDataAdapter data = new SqlDataAdapter(query, JournalWebsite);
 
@@ -36,9 +36,9 @@ namespace JournalWebsite
 
         }
 
-        public void register(string user, string password)
+        public bool register(string user, string password)
         {
-            string query = $"SELECT [User Name] FROM [User] WHERE [User Name] = '{user}'";
+            string query = $"SELECT [Username] FROM [Users] WHERE [Username] = '{user}'";
 
             SqlDataAdapter data = new SqlDataAdapter(query, JournalWebsite);
 
@@ -49,18 +49,19 @@ namespace JournalWebsite
             if (table.Rows.Count == 1)
             {
                 MessageBox.Show("Taken");
+                return false;
             }
 
             else
             {
-                string query2 = "INSERT INTO [User] ([User Name], [Password]) VALUES (@user, @pass)";
+                string query2 = "INSERT INTO [Users] ([Username], [Password]) VALUES (@user, @pass)";
 
                 JournalWebsite.Open();
 
                 SqlCommand cmd = new SqlCommand(query2, JournalWebsite);
 
 
-                cmd.Parameters.AddWithValue("@user", );
+                cmd.Parameters.AddWithValue("@user",1);
 
                 cmd.ExecuteNonQuery();
 

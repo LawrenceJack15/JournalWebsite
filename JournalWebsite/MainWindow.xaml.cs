@@ -49,7 +49,8 @@ namespace JournalWebsite
         private void RegButton_Click(object sender, RoutedEventArgs e)
         {
             Access log = new Access();
-
+            /*RegButton.Name = "RegButton";
+            RegButton.Click += RegButton_Click;*/
             log.register(Ubox.Text.Trim(), Pbox.Text.Trim());
 
         }
