@@ -11,64 +11,50 @@ namespace JournalWebsite
 {
     class Access
     {
-        public static string connection = "Data Source=LAPTOP-7KGTFNDJ\\SQLEXPRESS;Initial Catalog=Digital Journal;Integrated Security=True";
+
+        static string connection = "Data Source=DESKTOP-2PSBHKH\\SQLEXPRESS;Initial Catalog = JournalWebsite; Integrated Security = True";
         SqlConnection JournalWebsite = new SqlConnection(connection);
 
-        public bool login(string user, string password)
+        public bool login(string username, string password)
         {
-            string query = $"SELECT [Username], [Password] FROM [Users] WHERE [Username] = '{user}' AND [Password] = '{password}'";
-
-            SqlDataAdapter data = new SqlDataAdapter(query, JournalWebsite);
-
+            string SELECT = $"SELECT [User Name], [Password] FROM [User] WHERE [User Name] = '{username}' AND [Password] = '{password}'";
+            SqlDataAdapter log = new SqlDataAdapter(SELECT, JournalWebsite);
             DataTable table = new DataTable();
-
-            data.Fill(table);
+            log.Fill(table);
 
             if (table.Rows.Count == 1)
             {
                 return true;
             }
-
             else
             {
                 return false;
             }
-
         }
-
-        public bool register(string user, string password)
-        {
-            string query = $"SELECT [Username] FROM [Users] WHERE [Username] = '{user}'";
-
-            SqlDataAdapter data = new SqlDataAdapter(query, JournalWebsite);
-
+        public bool register(string username, string password)
+        { 
+            string SELECT = $"SELECT [User Name] FROM [User] WHERE [User Name] = '{username}'";
+            string ADD = $"INSERT INTO[User] ([User Name], [Password]) VALUES(@username, @pass)";
+            SqlDataAdapter reg = new SqlDataAdapter(SELECT, JournalWebsite);
             DataTable table = new DataTable();
-
-            data.Fill(table);
-
+            reg.Fill(table);
             if (table.Rows.Count == 1)
             {
-                MessageBox.Show("Taken");
                 return false;
             }
-
+            else if (password == "" || password.Length < 1)
+            {
+                return false;
+            }
             else
             {
-                string query2 = "INSERT INTO [Users] ([Username], [Password]) VALUES (@user, @pass)";
-
+                SqlCommand command = new SqlCommand(ADD, JournalWebsite);
+                command.Parameters.AddWithValue("@username", username);
+                command.Parameters.AddWithValue("@pass", password);
                 JournalWebsite.Open();
-
-                SqlCommand cmd = new SqlCommand(query2, JournalWebsite);
-
-
-                cmd.Parameters.AddWithValue("@user",1);
-
-                cmd.ExecuteNonQuery();
-
+                command.ExecuteNonQuery();
                 JournalWebsite.Close();
-
-                MessageBox.Show("Updated");
-
+                return true;    
             }
         }
     }

@@ -15,17 +15,23 @@ using System.Windows.Shapes;
 namespace JournalWebsite
 {
     /// <summary>
-    /// Interaction logic for RegisterPage.xaml
+    /// Interaction logic for addJournalEntry.xaml
     /// </summary>
-    public partial class RegisterPage : Window
+    public partial class addJournalEntry : Window
     {
-        public RegisterPage()
+        public addJournalEntry()
         {
             InitializeComponent();
         }
 
-        private void SubmitButton_Click(object sender, RoutedEventArgs e)
+        private void submitButton(object sender, RoutedEventArgs e)
         {
+
+        }
+
+        private void back(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
