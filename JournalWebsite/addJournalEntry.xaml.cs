@@ -14,9 +14,6 @@ using System.Windows.Shapes;
 
 namespace JournalWebsite
 {
-    /// <summary>
-    /// Interaction logic for addJournalEntry.xaml
-    /// </summary>
     public partial class addJournalEntry : Window
     {
         public addJournalEntry()
@@ -26,12 +23,26 @@ namespace JournalWebsite
 
         private void submitButton(object sender, RoutedEventArgs e)
         {
+            JournalClass addj = new JournalClass();
+            bool validation;
+
+            validation = addj.addJournal(enterJournalTitle.Text.Trim(), entry.Text.Trim());
+
+            if (validation == true)
+            {
+                MessageBox.Show("Next Step");
+
+            }
+            else
+            {
+                nameTaken.Foreground.Opacity = 100;
+            }
 
         }
 
         private void back(object sender, RoutedEventArgs e)
         {
-
+            //TODO
         }
     }
 }

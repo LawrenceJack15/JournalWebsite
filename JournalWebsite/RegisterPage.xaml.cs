@@ -23,9 +23,21 @@ namespace JournalWebsite
         {
             InitializeComponent();
         }
-
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
+            Access reg = new Access();
+            bool validation;
+            validation = reg.register(name.Text.Trim(), pass.Text.Trim());
+            if (validation == true)
+            {
+                MessageBox.Show("Next Step");
+            }
+            else
+            {
+                taken.Foreground.Opacity = 100;
+            }
+
         }
+
     }
 }

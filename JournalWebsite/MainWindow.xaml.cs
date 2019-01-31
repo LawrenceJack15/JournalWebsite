@@ -14,12 +14,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
 using System.Data;
+using library;
 
 namespace JournalWebsite
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
+
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -48,11 +47,9 @@ namespace JournalWebsite
 
         private void RegButton_Click(object sender, RoutedEventArgs e)
         {
-            Access log = new Access();
-            /*RegButton.Name = "RegButton";
-            RegButton.Click += RegButton_Click;*/
-            log.register(Ubox.Text.Trim(), Pbox.Text.Trim());
-
+            var RegisterPage = new RegisterPage();
+            RegisterPage.Show();
+            this.Close();
         }
     }
 }
